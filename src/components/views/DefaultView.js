@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from '@reach/router'
 
-import Layout from '../layout/Layout'
+import Layout from 'components/layout/Layout'
 
 const DefaultView = () => {
   return (

@@ -1,9 +1,9 @@
 import React from 'react'
 
-import FadeIn from '../spring/FadeIn'
-import Layout from '../layout/Layout'
+import FadeIn from 'components/spring/FadeIn'
+import Layout from 'components/layout/Layout'
 
-import Link from '../common/Link'
+import Link from 'components/common/Link'
 
 const HomeView = () => {
   return (

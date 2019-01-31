@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import Link from '../common/Link'
+import Link from 'components/common/Link'
 
 export const StyledLinkContainer = styled.nav`
     display: grid;
