@@ -1,16 +1,12 @@
 import React from 'react'
 
-import { StyledContainer, StyledMain } from './App.styled'
-import Footer from './layout/Footer'
-import Header from './layout/Header'
+import Layout from './layout/Layout'
 
 const App = () => {
   return (
-    <StyledContainer>
-      <Header />
-      <StyledMain>Hello!</StyledMain>
-      <Footer />
-    </StyledContainer>
+    <Layout>
+      Hello!
+    </Layout>
   )
 }
 
