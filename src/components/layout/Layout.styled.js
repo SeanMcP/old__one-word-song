@@ -8,7 +8,7 @@ export const StyledContainer = styled.div`
 
 export const StyledMain = styled.main`
     flex: 1;
-    padding: 0 1rem;
+    padding: 1rem;
     margin: 0 auto;
     max-width: 40rem;
     width: calc(100% - 2rem);

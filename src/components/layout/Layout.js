@@ -4,12 +4,12 @@ import { StyledContainer, StyledMain } from './Layout.styled'
 import Footer from './Footer'
 import Header from './Header'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, hideFooter, hideHeader }) => {
   return (
     <StyledContainer>
-      <Header />
+      {!hideHeader && <Header />}
       <StyledMain>{children}</StyledMain>
-      <Footer />
+      {!hideFooter && <Footer />}
     </StyledContainer>
   )
 }

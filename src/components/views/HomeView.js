@@ -5,7 +5,7 @@ import Layout from '../layout/Layout'
 
 const HomeView = () => {
   return (
-    <Layout>
+    <Layout hideHeader>
       <FadeIn delay={1000}>Hello there!</FadeIn>
     </Layout>
   )
