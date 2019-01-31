@@ -1,11 +1,15 @@
 import React from 'react'
-
+import { Router } from '@reach/router'
 import Layout from './layout/Layout'
+
+const Home = () => <div>Home</div>
 
 const App = () => {
   return (
     <Layout>
-      Hello!
+      <Router>
+        <Home exact path="/" />
+      </Router>
     </Layout>
   )
 }
