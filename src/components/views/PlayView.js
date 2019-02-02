@@ -15,8 +15,8 @@ const PlayView = props => {
   return (
     <Layout>
       <h2>Play! {props.gameMode}</h2>
-      <p>{turn}</p>
-      <button onClick={nextTurn}>Next</button>
+      {/* <p>{turn}</p> */}
+      <button onClick={() => updateScore(0, 1, 100)}>+100</button>
       <ScoreBoard gameMode={props.gameMode} score={score} />
     </Layout>
   )

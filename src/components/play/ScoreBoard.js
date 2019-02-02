@@ -10,11 +10,19 @@ const ScoreBoard = ({ gameMode, score }) => {
         output.push(
             <li key={`team-${team}-score`}>
                 <div>The {teamNames[team]}</div>
-                <div>{score[team]}</div>
+                <div>{tallyScore(score[team])}</div>
             </li>
         )
     }
   return <StyledUl>{output}</StyledUl>
+}
+
+const tallyScore = (rounds) => {
+    let total = 0;
+    for (const round in rounds) {
+        total += rounds[round]
+    }
+    return total
 }
 
 export default ScoreBoard
