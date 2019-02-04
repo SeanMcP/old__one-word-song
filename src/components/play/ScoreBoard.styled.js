@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const StyledUl = styled.ul`
     display: flex;
@@ -10,4 +10,14 @@ export const StyledUl = styled.ul`
         flex: 1;
         text-align: center;
     }
+`
+
+export const StyledLi = styled.li`
+    border-top: 4px solid transparent;
+    flex: 1;
+    text-align: center;
+
+    ${p => p.isActive && css`
+        border-color: ${p.theme.primary};
+    `}
 `
