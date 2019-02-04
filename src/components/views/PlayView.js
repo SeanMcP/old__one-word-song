@@ -1,23 +1,27 @@
 import React from 'react'
 
-import useScore from 'hooks/useScore'
-import useSongs from 'hooks/useSongs'
-import useTurns from 'hooks/useTurns'
+import useGame from 'hooks/useGame'
+// import useScore from 'hooks/useScore'
+// import useSongs from 'hooks/useSongs'
+// import useTurns from 'hooks/useTurns'
 
 import Layout from 'components/layout/Layout'
 import ScoreBoard from 'components/play/ScoreBoard'
 
 const PlayView = props => {
-  const { score, updateScore } = useScore()
-  const { turn, nextTurn } = useTurns({})
-  const { songs } = useSongs()
+  const { currentTeam, nextTurn, score, updateScore } = useGame()
 
   return (
     <Layout>
       <h2>Play! {props.gameMode}</h2>
-      {/* <p>{turn}</p> */}
-      <button onClick={() => updateScore(0, 1, 100)}>+100</button>
-      <ScoreBoard gameMode={props.gameMode} score={score} />
+      <p>{currentTeam}</p>
+      <button onClick={nextTurn}>Next</button>
+      <button onClick={() => updateScore(currentTeam, 100)}>+100</button>
+      <ScoreBoard
+        currentTeam={currentTeam}
+        gameMode={props.gameMode}
+        score={score}
+      />
     </Layout>
   )
 }

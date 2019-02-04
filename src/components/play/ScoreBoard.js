@@ -4,25 +4,19 @@ import { StyledUl } from './ScoreBoard.styled'
 
 const teamNames = ['Monkeys', 'Penguins', 'Narwhals', 'Hippos']
 
-const ScoreBoard = ({ gameMode, score }) => {
-    const output = []
-    for (const team in score) {
-        output.push(
-            <li key={`team-${team}-score`}>
-                <div>The {teamNames[team]}</div>
-                <div>{tallyScore(score[team])}</div>
-            </li>
-        )
-    }
+const ScoreBoard = ({ currentTeam, gameMode, score }) => {
+  const output = []
+  for (const id in score) {
+    output.push(
+      <li key={`team-${id}-score`}>
+        <div>The {teamNames[id]}</div>
+        <div>{tallyScore(score[id])}</div>
+      </li>
+    )
+  }
   return <StyledUl>{output}</StyledUl>
 }
 
-const tallyScore = (rounds) => {
-    let total = 0;
-    for (const round in rounds) {
-        total += rounds[round]
-    }
-    return total
-}
+const tallyScore = rounds => rounds.reduce((total, score) => total + score, 0)
 
 export default ScoreBoard
