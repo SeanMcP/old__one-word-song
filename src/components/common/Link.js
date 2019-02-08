@@ -10,8 +10,9 @@ const StyledLink = styled(Link)`
   padding: 0.5rem 1rem;
   position: relative;
   text-decoration: none;
-  
-  &, ::after {
+
+  &,
+  ::after {
     transition: all 100ms ease-in-out;
   }
 
@@ -30,7 +31,7 @@ const StyledLink = styled(Link)`
     color: white;
 
     ::after {
-        height: 100%;
+      height: 100%;
     }
   }
 `

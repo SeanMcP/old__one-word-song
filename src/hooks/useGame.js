@@ -3,14 +3,14 @@
 import useRounds from './useRounds'
 import useScore from './useScore'
 
-const useGame = (rounds=3) => {
-    const ROUNDS = useRounds(rounds)
-    const SCORE = useScore()
+const useGame = (rounds = 3) => {
+  const ROUNDS = useRounds(rounds)
+  const SCORE = useScore()
 
-    return {
-        ...ROUNDS,
-        ...SCORE
-    }
+  return {
+    ...ROUNDS,
+    ...SCORE
+  }
 }
 
 export default useGame
