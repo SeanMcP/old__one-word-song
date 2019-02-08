@@ -1,12 +1,13 @@
 import React from 'react'
-import { Spring } from 'react-spring'
+import { animated, useSpring } from 'react-spring'
 
 const FadeIn = ({ children, delay }) => {
-  return (
-    <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} delay={delay}>
-      {spring => <span style={spring}>{children}</span>}
-    </Spring>
-  )
+  const styles = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    delay
+  })
+  return <animated.span style={styles}>{children}</animated.span>
 }
 
 FadeIn.defaultProps = {
