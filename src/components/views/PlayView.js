@@ -1,15 +1,16 @@
 import React from 'react'
 
 import useGame from 'hooks/useGame'
-// import useScore from 'hooks/useScore'
-// import useSongs from 'hooks/useSongs'
-// import useTurns from 'hooks/useTurns'
+
+import SongsContext from 'context/songsContext'
 
 import Layout from 'components/layout/Layout'
 import ScoreBoard from 'components/play/ScoreBoard'
 
 const PlayView = props => {
   const { currentTeam, nextTurn, score, updateScore } = useGame()
+  const { songs } = React.useContext(SongsContext)
+  console.log(songs)
 
   return (
     <Layout>
