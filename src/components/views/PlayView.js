@@ -5,13 +5,17 @@ import useGame from 'hooks/useGame'
 import GameContext from 'context/gameContext'
 
 import Layout from 'components/layout/Layout'
+import PassPhase from 'components/play/PassPhase'
 import ScoreBoard from 'components/play/ScoreBoard'
 
 const PlayView = ({ gameMode }) => {
+  const [passPhase, setPassPhase] = React.useState(false)
   const {
     currentTeam,
+    hasSkipped,
     nextSong,
     nextTurn,
+    nextWord,
     score,
     skipSong,
     songIndex,
@@ -20,22 +24,38 @@ const PlayView = ({ gameMode }) => {
   } = useGame()
   const { songs, words } = React.useContext(GameContext)
 
+  function next() {
+    setPassPhase(false)
+    nextTurn()
+    nextSong()
+    nextWord()
+  }
+
+  function correctGuess() {
+    updateScore(currentTeam, 100)
+    setPassPhase(true)
+  }
+
   return (
     <Layout>
       <h2>Play! {gameMode}</h2>
-      <p>
-        <b>Current team</b>: {currentTeam}
-      </p>
-      <p>
-        <b>Song</b>: {songs[songIndex]}
-      </p>
-      <p>
-        <b>Word</b>: {words[wordIndex]}
-      </p>
-      <button onClick={nextSong}>Next song</button>
-      <button onClick={skipSong}>Skip song</button>
-      <button onClick={nextTurn}>Next turn</button>
-      <button onClick={() => updateScore(currentTeam, 100)}>+100</button>
+      {passPhase ? (
+        <PassPhase next={next} />
+      ) : (
+        <>
+          <p>
+            <b>Song</b>: “{songs[songIndex]}”
+          </p>
+          <button onClick={skipSong} disabled={hasSkipped}>
+            Skip song
+          </button>
+          <p>
+            <b>Word</b>: {words[wordIndex]}
+          </p>
+          <button onClick={next}>Next turn</button>
+          <button onClick={correctGuess}>Correct!</button>
+        </>
+      )}
       <ScoreBoard currentTeam={currentTeam} gameMode={gameMode} score={score} />
     </Layout>
   )
