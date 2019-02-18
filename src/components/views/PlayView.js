@@ -6,6 +6,7 @@ import GameContext from 'context/gameContext'
 
 import Layout from 'components/layout/Layout'
 import PassPhase from 'components/play/PassPhase'
+import PlayPhase from 'components/play/PlayPhase'
 import ScoreBoard from 'components/play/ScoreBoard'
 
 const PlayView = ({ gameMode }) => {
@@ -42,19 +43,14 @@ const PlayView = ({ gameMode }) => {
       {passPhase ? (
         <PassPhase next={next} />
       ) : (
-        <>
-          <p>
-            <b>Song</b>: “{songs[songIndex]}”
-          </p>
-          <button onClick={skipSong} disabled={hasSkipped}>
-            Skip song
-          </button>
-          <p>
-            <b>Word</b>: {words[wordIndex]}
-          </p>
-          <button onClick={next}>Next turn</button>
-          <button onClick={correctGuess}>Correct!</button>
-        </>
+        <PlayPhase
+          correctGuess={correctGuess}
+          currentSong={songs[songIndex]}
+          currentWord={words[wordIndex]}
+          hasSkipped={hasSkipped}
+          next={next}
+          skipSong={skipSong}
+        />
       )}
       <ScoreBoard currentTeam={currentTeam} gameMode={gameMode} score={score} />
     </Layout>
