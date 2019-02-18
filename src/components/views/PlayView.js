@@ -7,22 +7,28 @@ import SongsContext from 'context/songsContext'
 import Layout from 'components/layout/Layout'
 import ScoreBoard from 'components/play/ScoreBoard'
 
-const PlayView = props => {
-  const { currentTeam, nextTurn, score, updateScore } = useGame()
+const PlayView = ({ gameMode }) => {
+  const {
+    currentTeam,
+    nextSong,
+    nextTurn,
+    score,
+    skipSong,
+    songIndex,
+    updateScore
+  } = useGame()
   const { songs } = React.useContext(SongsContext)
-  console.log(songs)
 
   return (
     <Layout>
-      <h2>Play! {props.gameMode}</h2>
+      <h2>Play! {gameMode}</h2>
       <p>{currentTeam}</p>
-      <button onClick={nextTurn}>Next</button>
+      <p>{songs[songIndex]}</p>
+      <button onClick={nextSong}>Next song</button>
+      <button onClick={skipSong}>Skip song</button>
+      <button onClick={nextTurn}>Next turn</button>
       <button onClick={() => updateScore(currentTeam, 100)}>+100</button>
-      <ScoreBoard
-        currentTeam={currentTeam}
-        gameMode={props.gameMode}
-        score={score}
-      />
+      <ScoreBoard currentTeam={currentTeam} gameMode={gameMode} score={score} />
     </Layout>
   )
 }

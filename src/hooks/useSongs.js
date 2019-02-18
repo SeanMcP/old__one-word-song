@@ -1,15 +1,33 @@
 import React from 'react'
-import shuffle from 'shuffle-array'
 
-const songArray = [
-  'Twinkle Twinkle Little Star',
-  'Bohemian Rhapsody',
-  'Ice Ice Baby'
-]
+import SONGS from 'data/songs.json'
 
 const useSongs = () => {
-  const [songs] = React.useState(shuffle(songArray))
-  return { songs }
+  const [songIndex, setSongIndex] = React.useState(0)
+  const [hasSkipped, setHasSkipped] = React.useState(false)
+
+  function nextSong() {
+    if (songIndex + 1 < SONGS.length) {
+      setSongIndex(songIndex + 1)
+      if (hasSkipped) {
+        setHasSkipped(false)
+      }
+    }
+  }
+
+  function skipSong() {
+    if (!hasSkipped) {
+      nextSong()
+      setHasSkipped(true)
+    }
+  }
+
+  return {
+    hasSkipped,
+    nextSong,
+    skipSong,
+    songIndex
+  }
 }
 
 export default useSongs
