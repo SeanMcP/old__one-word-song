@@ -2,7 +2,7 @@ import React from 'react'
 
 import useGame from 'hooks/useGame'
 
-import SongsContext from 'context/songsContext'
+import GameContext from 'context/gameContext'
 
 import Layout from 'components/layout/Layout'
 import ScoreBoard from 'components/play/ScoreBoard'
@@ -15,15 +15,23 @@ const PlayView = ({ gameMode }) => {
     score,
     skipSong,
     songIndex,
-    updateScore
+    updateScore,
+    wordIndex
   } = useGame()
-  const { songs } = React.useContext(SongsContext)
+  const { songs, words } = React.useContext(GameContext)
 
   return (
     <Layout>
       <h2>Play! {gameMode}</h2>
-      <p>{currentTeam}</p>
-      <p>{songs[songIndex]}</p>
+      <p>
+        <b>Current team</b>: {currentTeam}
+      </p>
+      <p>
+        <b>Song</b>: {songs[songIndex]}
+      </p>
+      <p>
+        <b>Word</b>: {words[wordIndex]}
+      </p>
       <button onClick={nextSong}>Next song</button>
       <button onClick={skipSong}>Skip song</button>
       <button onClick={nextTurn}>Next turn</button>

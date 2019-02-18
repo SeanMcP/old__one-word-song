@@ -8,19 +8,19 @@ import SetupView from 'components/views/SetupView'
 
 import StyleWrapper from 'components/StyleWrapper'
 
-import { SongsProvider } from 'context/songsContext'
+import { GameProvider } from 'context/gameContext'
 
 const App = () => {
   return (
     <StyleWrapper>
-      <SongsProvider>
+      <GameProvider>
         <Router>
           <HomeView exact path="/" />
           <SetupView path="/setup" />
           <PlayView path="/play/:gameMode" />
           <DefaultView default />
         </Router>
-      </SongsProvider>
+      </GameProvider>
     </StyleWrapper>
   )
 }
