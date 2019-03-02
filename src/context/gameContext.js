@@ -7,13 +7,13 @@ import WORDS from '../data/words.json'
 const GameContext = React.createContext()
 
 export const GameProvider = ({ children }) => {
-  return (
-    <GameContext.Provider
-      value={{ songs: shuffle(SONGS), words: shuffle(WORDS) }}
-    >
-      {children}
-    </GameContext.Provider>
-  )
+    return (
+        <GameContext.Provider
+            value={{ songs: shuffle(SONGS), words: shuffle(WORDS) }}
+        >
+            {children}
+        </GameContext.Provider>
+    )
 }
 
 export default GameContext

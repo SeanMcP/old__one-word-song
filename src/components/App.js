@@ -11,18 +11,18 @@ import StyleWrapper from 'components/StyleWrapper'
 import { GameProvider } from 'context/gameContext'
 
 const App = () => {
-  return (
-    <StyleWrapper>
-      <GameProvider>
-        <Router>
-          <HomeView exact path="/" />
-          <SetupView path="/setup" />
-          <PlayView path="/play/:gameMode" />
-          <DefaultView default />
-        </Router>
-      </GameProvider>
-    </StyleWrapper>
-  )
+    return (
+        <StyleWrapper>
+            <GameProvider>
+                <Router>
+                    <HomeView exact path="/" />
+                    <SetupView path="/setup" />
+                    <PlayView path="/play/:gameMode" />
+                    <DefaultView default />
+                </Router>
+            </GameProvider>
+        </StyleWrapper>
+    )
 }
 
 export default App

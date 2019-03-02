@@ -1,4 +1,4 @@
 export default {
-  fun: 'fun',
-  teams: 'teams'
+    fun: 'fun',
+    teams: 'teams'
 }
